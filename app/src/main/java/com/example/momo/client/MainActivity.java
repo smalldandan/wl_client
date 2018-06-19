@@ -1,6 +1,7 @@
 package com.example.momo.client;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.View;
@@ -18,6 +19,8 @@ import android.widget.Toast;
 
 public class MainActivity extends Activity {
     GridView gv;
+    Intent intent;
+
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -33,6 +36,8 @@ public class MainActivity extends Activity {
                                     int position, long id) {
                 switch (position) {
                     case 0:
+                        intent = new Intent(MainActivity.this,TableActivity.class);
+                        startActivity(intent);
                        break;
                     default:
                         Toast.makeText(getApplicationContext(), position+"", Toast.LENGTH_LONG).show();
