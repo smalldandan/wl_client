@@ -1,6 +1,7 @@
 package com.example.momo.client;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -75,8 +76,9 @@ public class LoginActivity extends Activity {
             }else{
                 // json 保存到客户端 点餐时还有用用户数据
                 configUtil.setUserJson(result);
-               // Intent intent = new Intent(LoginActivity.this,MainActivity.class);
-               // startActivity(intent);
+                //登陆成功之后跳转到主界面
+                Intent intent = new Intent(LoginActivity.this,MainActivity.class);
+                startActivity(intent);
             }
 
         }
