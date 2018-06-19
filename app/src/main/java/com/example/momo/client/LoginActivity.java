@@ -21,13 +21,16 @@ import java.util.List;
 public class LoginActivity extends Activity {
 
     EditText usernameEt,passwordEt;
+    ConfigUtil configUtil;
+
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login);
         usernameEt = (EditText)findViewById(R.id.editText);
         passwordEt = (EditText)findViewById(R.id.editText3);
-
+        configUtil = new ConfigUtil(this);
     }
 
     String doLogin(String url){
@@ -63,8 +66,19 @@ public class LoginActivity extends Activity {
         @Override
         protected void onPostExecute(String result) {
             super.onPostExecute(result);
-            //1,保存数据
-            Toast.makeText(getApplicationContext(),result,Toast.LENGTH_LONG).show();
+
+            // 3. 保存数据
+            Toast.makeText(getApplicationContext(), result, Toast.LENGTH_LONG).show();
+            if(result!=null&&result.equals("-1")){
+                Toast.makeText(getApplicationContext(), "登陆失败！", Toast.LENGTH_LONG).show();
+                return;
+            }else{
+                // json 保存到客户端 点餐时还有用用户数据
+                configUtil.setUserJson(result);
+               // Intent intent = new Intent(LoginActivity.this,MainActivity.class);
+               // startActivity(intent);
+            }
+
         }
     }
 
