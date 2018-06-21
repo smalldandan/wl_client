@@ -38,9 +38,9 @@ public class OrderActivity extends Activity{
     ConfigUtil configUtil;
     DbAdapter dbAdapter;
     List<Menu> menuList;
-    //List<MenuTemp> menuTempList;
+    List<MenuTemp> menuTempList;
     ListView lv;
-   // MenuListAdapter menuListAdapter;
+    MenuListAdapter menuListAdapter;
     Gson gson;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,8 +52,8 @@ public class OrderActivity extends Activity{
         tableSp = (Spinner)findViewById(R.id.spinner);
         numEditText = (EditText)findViewById(R.id.number_editText2);
         menuList = new ArrayList<Menu>();
-//        menuTempList  = new ArrayList<MenuTemp>();
-//        menuListAdapter = new MenuListAdapter();
+        menuTempList  = new ArrayList<MenuTemp>();
+        menuListAdapter = new MenuListAdapter();
         Date date = new Date();
         SimpleDateFormat sdf = new SimpleDateFormat("yy/MM/dd HH:mm");
 
@@ -72,8 +72,8 @@ public class OrderActivity extends Activity{
         new MyTableTask().execute(tableUrl);
 
 
-//        lv = (ListView)findViewById(R.id.listView1);
-//        lv.setAdapter(menuListAdapter);
+        lv = (ListView)findViewById(R.id.listView1);
+        lv.setAdapter(menuListAdapter);
     }
 
 //    // 下订单
@@ -117,43 +117,43 @@ public class OrderActivity extends Activity{
 
     }
 
-//    class MenuListAdapter extends BaseAdapter{
-//
-//        @Override
-//        public int getCount() {
-//            return menuTempList.size();
-//        }
-//
-//        @Override
-//        public Object getItem(int position) {
-//            return null;
-//        }
-//
-//        @Override
-//        public long getItemId(int position) {
-//            return 0;
-//        }
-//
-//        @Override
-//        public View getView(int position, View convertView, ViewGroup parent) {
-//            View v;
-//            if(convertView==null){
-//                v = View.inflate(getApplicationContext(), R.layout.menu_item, null);
-//            }else{
-//                v = convertView;
-//            }
-//
-//            MenuTemp mt = menuTempList.get(position);
-//            TextView idTv = (TextView)v.findViewById(R.id.id_textView1);
-//            TextView numTv = (TextView)v.findViewById(R.id.num_textView1);
-//            TextView nameTv = (TextView)v.findViewById(R.id.name_textView1);
-//
-//            idTv.setText(position+1+"");
-//            numTv.setText(mt.getNum()+"");
-//            nameTv.setText(mt.getName());
-//            return v;
-//        }
-//    }
+    class MenuListAdapter extends BaseAdapter{
+
+        @Override
+        public int getCount() {
+            return menuTempList.size();
+        }
+
+        @Override
+        public Object getItem(int position) {
+            return null;
+        }
+
+        @Override
+        public long getItemId(int position) {
+            return 0;
+        }
+
+        @Override
+        public View getView(int position, View convertView, ViewGroup parent) {
+            View v;
+            if(convertView==null){
+                v = View.inflate(getApplicationContext(), R.layout.menu_item, null);
+            }else{
+                v = convertView;
+            }
+
+            MenuTemp mt = menuTempList.get(position);
+            TextView idTv = (TextView)v.findViewById(R.id.id_textView1);
+            TextView numTv = (TextView)v.findViewById(R.id.num_textView1);
+            TextView nameTv = (TextView)v.findViewById(R.id.name_textView1);
+
+            idTv.setText(position+1+"");
+            numTv.setText(mt.getNum()+"");
+            nameTv.setText(mt.getName());
+            return v;
+        }
+    }
 
 
     class MenuAdapter extends BaseAdapter{
@@ -190,47 +190,47 @@ public class OrderActivity extends Activity{
 
     }
 
-//    // 点菜
-//    public void diancai(View v){
-//        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-//        builder.setTitle("点菜");
-//        builder.setNegativeButton("取消", null);
-//        final View v1 = View.inflate(this, R.layout.diancai, null);
-//        builder.setView(v1);
-//
-//        final Spinner sp = (Spinner)v1.findViewById(R.id.spinner1);
-//        final EditText numEt = (EditText)v1.findViewById(R.id.num_editText1);
-//        final EditText descEt = (EditText)v1.findViewById(R.id.desc_editText2);
-//
-//        builder.setPositiveButton("确定", new OnClickListener() {
-//            @Override
-//            public void onClick(DialogInterface dialog, int which) {
-//                MenuTemp mt = new MenuTemp();
-//                //String name = sp.getSelectedItem().toString();
-//                int index = sp.getSelectedItemPosition();
-//                Menu m = menuList.get(index);
-//                int num = Integer.parseInt(numEt.getText().toString());
-//                String desc = descEt.getText().toString();
-//                mt.setName(m.getName());
-//                mt.setDesc(desc);
-//                mt.setNum(num);
-//                mt.setMid(m.getId());
-//                menuTempList.add(mt);
-//                menuListAdapter.notifyDataSetChanged();
-//            }
-//        });
-//
-//
-//
-//        MenuAdapter ma = new MenuAdapter();
-//        sp.setAdapter(ma);
-//
-//
-//        menuList = dbAdapter.query();
-//        ma.notifyDataSetChanged();
-//
-//        builder.create().show();
-//    }
+    // 点菜
+    public void diancai(View v){
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("点菜");
+        builder.setNegativeButton("取消", null);
+        final View v1 = View.inflate(this, R.layout.diancai, null);
+        builder.setView(v1);
+
+        final Spinner sp = (Spinner)v1.findViewById(R.id.spinner1);
+        final EditText numEt = (EditText)v1.findViewById(R.id.num_editText1);
+        final EditText descEt = (EditText)v1.findViewById(R.id.desc_editText2);
+
+        builder.setPositiveButton("确定", new OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                MenuTemp mt = new MenuTemp();
+                //String name = sp.getSelectedItem().toString();
+                int index = sp.getSelectedItemPosition();
+                Menu m = menuList.get(index);
+                int num = Integer.parseInt(numEt.getText().toString());
+                String desc = descEt.getText().toString();
+                mt.setName(m.getName());
+                mt.setDesc(desc);
+                mt.setNum(num);
+                mt.setMid(m.getId());
+                menuTempList.add(mt);
+                menuListAdapter.notifyDataSetChanged();
+            }
+        });
+
+
+
+        MenuAdapter ma = new MenuAdapter();
+        sp.setAdapter(ma);
+
+
+        menuList = dbAdapter.query();
+        ma.notifyDataSetChanged();
+
+        builder.create().show();
+    }
 
 
 

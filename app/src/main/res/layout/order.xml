@@ -50,6 +50,7 @@
         android:layout_alignStart="@+id/textView4"
         android:layout_below="@+id/number_editText2"
         android:layout_marginTop="36dp"
+        android:onClick="diancai"
         android:text="点餐" />
 
     <Button
@@ -58,12 +59,14 @@
         android:layout_height="wrap_content"
         android:layout_alignTop="@+id/diancai_button3"
         android:layout_toEndOf="@+id/spinner"
+        android:onClick="order"
         android:text="下订单" />
 
     <ListView
+        android:id="@+id/listView1"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_alignParentEnd="true"
-        android:layout_alignStart="@+id/diancai_button3"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
         android:layout_below="@+id/diancai_button3" />
 </RelativeLayout>

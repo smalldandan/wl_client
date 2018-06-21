@@ -6,8 +6,12 @@ package com.example.momo.client;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class DbAdapter {
@@ -85,32 +89,32 @@ public class DbAdapter {
         }
     }
 
-//
-//    public List<Menu> query(){
-//        open();
-//        String[] columns = {ID,TID,NAME,PRICE,DESCRIPTION};
-//        Cursor c = db.query(TABLE_NAME, columns, null, null, null, null, null);
-//        int count = c.getCount();
-//        List<Menu> list = new ArrayList<Menu>();
-//        for(int i=0;i<count;i++){
-//            c.moveToPosition(i);
-//            int id = c.getInt(0);
-//            int tid = c.getInt(1);
-//            String name = c.getString(2);
-//            int price = c.getInt(3);
-//            String desc = c.getString(4);
-//            Menu m = new Menu();
-//            m.setId(id);
-//            m.setTid(tid);
-//            m.setName(name);
-//            m.setPrice(price);
-//            m.setDesc(desc);
-//
-//            list.add(m);
-//        }
-//        db.close();
-//        return list;
-//    }
+
+    public List<Menu> query(){
+        open();
+        String[] columns = {ID,TID,NAME,PRICE,DESCRIPTION};
+        Cursor c = db.query(TABLE_NAME, columns, null, null, null, null, null);
+        int count = c.getCount();
+        List<Menu> list = new ArrayList<Menu>();
+        for(int i=0;i<count;i++){
+            c.moveToPosition(i);
+            int id = c.getInt(0);
+            int tid = c.getInt(1);
+            String name = c.getString(2);
+            int price = c.getInt(3);
+            String desc = c.getString(4);
+            Menu m = new Menu();
+            m.setId(id);
+            m.setTid(tid);
+            m.setName(name);
+            m.setPrice(price);
+            m.setDesc(desc);
+
+            list.add(m);
+        }
+        db.close();
+        return list;
+    }
 
 
 }
