@@ -21,6 +21,7 @@
 
         <activity android:name=".MainActivity"></activity>
         <activity android:name=".TableActivity"></activity>
+        <activity android:name=".UpdateActivity"></activity>
 
     </application>
 </manifest>

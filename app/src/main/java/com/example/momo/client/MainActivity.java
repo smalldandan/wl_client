@@ -39,6 +39,10 @@ public class MainActivity extends Activity {
                         intent = new Intent(MainActivity.this,TableActivity.class);
                         startActivity(intent);
                        break;
+                    case 5:
+                        intent = new Intent(MainActivity.this,UpdateActivity.class);
+                        startActivity(intent);
+                        break;
                     default:
                         Toast.makeText(getApplicationContext(), position+"", Toast.LENGTH_LONG).show();
                         break;
