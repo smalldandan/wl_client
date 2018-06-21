@@ -39,6 +39,10 @@ public class MainActivity extends Activity {
                         intent = new Intent(MainActivity.this,TableActivity.class);
                         startActivity(intent);
                        break;
+                    case 1:
+                        intent = new Intent(MainActivity.this,OrderActivity.class);
+                        startActivity(intent);
+                        break;
                     case 5:
                         intent = new Intent(MainActivity.this,UpdateActivity.class);
                         startActivity(intent);

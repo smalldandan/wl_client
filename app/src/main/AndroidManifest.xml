@@ -22,6 +22,7 @@
         <activity android:name=".MainActivity"></activity>
         <activity android:name=".TableActivity"></activity>
         <activity android:name=".UpdateActivity"></activity>
+        <activity android:name=".OrderActivity"></activity>
 
     </application>
 </manifest>
