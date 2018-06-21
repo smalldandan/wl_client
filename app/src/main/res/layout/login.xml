@@ -32,7 +32,7 @@
         android:layout_toEndOf="@+id/textView2"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="Name" />
+        android:text="admin" />
 
     <EditText
         android:id="@+id/editText3"
@@ -41,7 +41,8 @@
         android:layout_alignBottom="@+id/textView3"
         android:layout_alignEnd="@+id/editText"
         android:ems="10"
-        android:inputType="textPassword" />
+        android:inputType="textPassword"
+        android:text="123" />
 
     <Button
         android:id="@+id/button"
