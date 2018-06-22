@@ -42,6 +42,7 @@ public class ChangeActivity extends Activity {
         sp2.setAdapter(myEmptyTableAdapter);
 
         myYourenTableAdapter = new MyYourenTableAdapter();
+
         sp1.setAdapter(myYourenTableAdapter);
 
         String url = "http://10.0.2.2:8080/WLServer/TableServlet?flag=1";
