@@ -47,6 +47,10 @@ public class MainActivity extends Activity {
                         intent = new Intent(MainActivity.this,UnionActivity .class);
                         startActivity(intent);
                         break;
+                    case 3:
+                        intent = new Intent(MainActivity.this,ChangeActivity.class);
+                        startActivity(intent);
+                        break;
                     case 4:
                         intent = new Intent(MainActivity.this,PayActivity.class);
                         startActivity(intent);

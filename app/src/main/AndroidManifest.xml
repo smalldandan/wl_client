@@ -25,6 +25,7 @@
         <activity android:name=".OrderActivity"></activity>
         <activity android:name=".PayActivity"></activity>
         <activity android:name=".UnionActivity"></activity>
+        <activity android:name=".ChangeActivity"></activity>
 
     </application>
 </manifest>
