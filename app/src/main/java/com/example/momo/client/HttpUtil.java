@@ -24,7 +24,7 @@ public class HttpUtil {
         HttpEntity entity = null;
         if (list != null) {
             try {
-                entity = new UrlEncodedFormEntity(list, "gbk");
+                entity = new UrlEncodedFormEntity(list, "UTF-8");
             } catch (UnsupportedEncodingException e) {
                 e.printStackTrace();
             }
@@ -37,7 +37,7 @@ public class HttpUtil {
             if (response.getStatusLine().getStatusCode() == 200) {
                 String result = EntityUtils.toString(response.getEntity());
                 // save SharedPre...
-                result = new String(result.getBytes("iso-8859-1"),"gbk");
+                result = new String(result.getBytes("iso-8859-1"),"UTF-8");
                 System.out.println(result);
                 return result;
             }

@@ -23,6 +23,8 @@
         <activity android:name=".TableActivity"></activity>
         <activity android:name=".UpdateActivity"></activity>
         <activity android:name=".OrderActivity"></activity>
+        <activity android:name=".PayActivity"></activity>
+        <activity android:name=".UnionActivity"></activity>
 
     </application>
 </manifest>
