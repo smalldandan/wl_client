@@ -1,14 +1,5 @@
 package com.example.momo.client;
 
-import java.lang.reflect.Type;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-
-import org.apache.http.NameValuePair;
-import org.apache.http.message.BasicNameValuePair;
-
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -26,6 +17,15 @@ import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+
+import org.apache.http.NameValuePair;
+import org.apache.http.message.BasicNameValuePair;
+
+import java.lang.reflect.Type;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 
 public class OrderActivity extends Activity{
     Spinner tableSp;
@@ -76,28 +76,28 @@ public class OrderActivity extends Activity{
         lv.setAdapter(menuListAdapter);
     }
 
-//    // 下订单
-//    public void order(View v){
-//        Order o = new Order();
-//        o.setCtime(ctime);
-//        o.setUid(uid);
-//        int index = tableSp.getSelectedItemPosition();
-//        Table t = tableList.get(index);
-//        o.setTid(t.getTid());
-//        persons = Integer.parseInt(numEditText.getText().toString());
-//        o.setPersonNum(persons);
-//        o.setDesc("desc");
-//        o.setList(menuTempList);
-//
-//
-//        Gson gson = new Gson();
-//        Type type = new TypeToken<Order>(){}.getType();
-//        String json = gson.toJson(o, type);
-//
-//        String url = "http://10.0.2.2:8080/WL_Server/OrderServlet";
-//
-//        new MyOrderTask().execute(url,json);
-//    }
+    // 下订单
+    public void order(View v){
+        Order o = new Order();
+        o.setCtime(ctime);
+        o.setUid(uid);
+        int index = tableSp.getSelectedItemPosition();
+        Table t = tableList.get(index);
+        o.setTid(t.getTid());
+        persons = Integer.parseInt(numEditText.getText().toString());
+        o.setPersonNum(persons);
+        o.setDesc("desc");
+        o.setList(menuTempList);
+
+
+        Gson gson = new Gson();
+        Type type = new TypeToken<Order>(){}.getType();
+        String json = gson.toJson(o, type);
+
+        String url = "http://10.0.2.2:8080/WLServer/OrderServlet";
+
+        new MyOrderTask().execute(url,json);
+    }
 
     class MyOrderTask extends AsyncTask<String, Integer, String>{
 
@@ -112,7 +112,7 @@ public class OrderActivity extends Activity{
         @Override
         protected void onPostExecute(String result) {
             super.onPostExecute(result);
-            Toast.makeText(getApplicationContext(), result, 1).show();
+            Toast.makeText(getApplicationContext(), result, Toast.LENGTH_LONG).show();
         }
 
     }
